@@ -1,0 +1,4 @@
+../App/Src/process.c:32:6:ControlInit	8	static
+../App/Src/process.c:50:6:PSFBON	8	static
+../App/Src/process.c:64:6:PSFBOFF	8	static
+../App/Src/process.c:72:6:Tim7_Execution	4	static
