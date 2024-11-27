@@ -1,0 +1,3 @@
+../App/Src/ntc_measurement.c:67:7:calculateTemperature	40	static
+../App/Src/ntc_measurement.c:90:7:convert_to_kelvin	16	static
+../App/Src/ntc_measurement.c:95:7:calculateTrafoTemperature	24	static

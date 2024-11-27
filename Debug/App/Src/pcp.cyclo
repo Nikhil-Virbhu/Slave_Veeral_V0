@@ -1,0 +1,3 @@
+pcp.c:12:10:crc16_check	4
+pcp.c:37:9:read_data_from_bus	3
+pcp.c:73:10:generate_address	1

@@ -1,0 +1,3 @@
+../App/Src/pcp.c:12:10:crc16_check	32	static
+../App/Src/pcp.c:37:9:read_data_from_bus	16	static
+../App/Src/pcp.c:73:10:generate_address	16	static

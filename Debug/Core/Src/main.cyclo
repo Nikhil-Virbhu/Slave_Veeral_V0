@@ -1,3 +1,4 @@
-main.c:66:5:main	1
-main.c:115:6:SystemClock_Config	3
-main.c:164:6:Error_Handler	1
+main.c:91:5:main	9
+main.c:292:6:SystemClock_Config	3
+main.c:334:10:SlaveBoardNum	1
+main.c:346:6:Error_Handler	1

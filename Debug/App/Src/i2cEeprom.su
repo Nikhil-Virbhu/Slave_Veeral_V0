@@ -1,0 +1,6 @@
+../App/Src/i2cEeprom.c:120:10:eeprom_crc_generate	32	static
+../App/Src/i2cEeprom.c:140:6:writeStructureToEeprom	40	static
+../App/Src/i2cEeprom.c:156:9:readStructurefromEeprom	40	static
+../App/Src/i2cEeprom.c:184:6:para_load	8	static
+../App/Src/i2cEeprom.c:198:6:default_para_load	8	static
+../App/Src/i2cEeprom.c:206:6:para_save	8	static

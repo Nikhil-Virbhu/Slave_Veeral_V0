@@ -1,0 +1,8 @@
+../App/Src/protection.c:8:6:reset_driver	4	static
+../App/Src/protection.c:21:6:faultInit	4	static
+../App/Src/protection.c:286:6:check_over_limit	16	static
+../App/Src/protection.c:351:6:check_under_limit	16	static
+../App/Src/protection.c:404:6:check_over_limitI	16	static
+../App/Src/protection.c:443:6:slave_health	4	static
+../App/Src/protection.c:461:6:manual_fault_reset	8	static
+../App/Src/protection.c:547:6:faultDetection	4	static

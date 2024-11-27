@@ -1,0 +1,4 @@
+measurement.c:30:6:parameterCalculations_ADC1	2
+measurement.c:52:6:parameterCalculations_ADC2	2
+measurement.c:73:6:parameterCalculations_ADC3	2
+measurement.c:90:6:parameterCalculations_ADC4	2

@@ -1,0 +1,3 @@
+../App/Src/io.c:26:6:checkDebounce	16	static
+../App/Src/io.c:59:9:getDigiIn	4	static
+../App/Src/io.c:108:6:setDigiOut	16	static

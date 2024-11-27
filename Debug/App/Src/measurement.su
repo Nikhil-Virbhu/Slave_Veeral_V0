@@ -1,0 +1,4 @@
+../App/Src/measurement.c:30:6:parameterCalculations_ADC1	16	static
+../App/Src/measurement.c:52:6:parameterCalculations_ADC2	16	static
+../App/Src/measurement.c:73:6:parameterCalculations_ADC3	16	static
+../App/Src/measurement.c:90:6:parameterCalculations_ADC4	16	static
