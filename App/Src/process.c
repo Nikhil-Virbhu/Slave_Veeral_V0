@@ -340,10 +340,11 @@ void protectionMonitoring_Temp(void){
 * Input:
 * Return:
 */
-/*This section is not mounted in slave PCB
- * void calculateRMS(unsigned int SamplingFreq, unsigned int Fsystem){
+/*This section is not mounted in slave PCB */
+void calculateRMS(unsigned int SamplingFreq, unsigned int Fsystem){
 	static uint8_t smplCnt = 0;
 	uint8_t Temp_sample=SamplingFreq/Fsystem;
+	Temp_sample = 1000; //For 10 cycle of System
 
 	vsup_rms_buffer = (float)vsup_rms_buffer + (float)(Vsup[procValue]*Vsup[procValue]);
 	isup_rms_buffer = (float)isup_rms_buffer + (float)(Isup[procValue]*Isup[procValue]);
@@ -370,7 +371,7 @@ void protectionMonitoring_Temp(void){
 	  //  protectionMonitoring_AC();
   }
 
-}*/
+}
 
 /*
 * Function Description:
@@ -384,36 +385,36 @@ void Parameter_Calculations(void)
 
 //Calculation of AC quantities like Iac, Vsup, Isup filtering and DC Blocking + Kalman Starts
 
-/*	This section is not mounted in slave PCB
- * Iafe[rawValue] = ((((float)Adc_Avg_Buffer[IAFE]- Vref)*ADC_RESOLUTION*ConfigPara.calFactor[IAFE].Gain)* ConfigPara.calFactor[IAFE].corFac)/IphBase;//3.39
+/*	This section is not mounted in slave PCB */
+    Iafe[rawValue] = ((((float)Adc_Avg_Buffer[IAFE]- Vref)*ADC_RESOLUTION*ConfigPara.calFactor[IAFE].Gain)* ConfigPara.calFactor[IAFE].corFac)/IphBase;//3.39
 	iafeRmsLPF.yn = ConfigPara.DcBlocker_factor.Iafe*iafeRmsLPF.yn+(Iafe[rawValue]-iafeRmsLPF.xn);  // DC Blockers
 	iafeRmsLPF.xn = Iafe[rawValue];
 	Iafe[procValue] = iafeRmsLPF.yn; // only DC blocker Output
-*/
 
-/* This section is not mounted in slave PCB
+
+/* This section is not mounted in slave PCB */
 	Vsup[rawValue] = ((((float)Adc_Avg_Buffer[VSUP]- Vref)*ADC_RESOLUTION*ConfigPara.calFactor[VSUP].Gain)* ConfigPara.calFactor[VSUP].corFac)/	IphBase; //3.39
 	Vsup_DCBlock.yn = ConfigPara.DcBlocker_factor.Vsup*Vsup_DCBlock.yn+(Vsup[rawValue]-Vsup_DCBlock.xn);  // DC Blockers
 	Vsup_DCBlock.xn = Vsup[rawValue];
 	Vsup[procValue] = Vsup_DCBlock.yn; // only DC blocker Output
-*/
 
-/* This section is not mounted in slave PCB
+
+/* This section is not mounted in slave PCB */
 	Isup[rawValue] = ((((float)Adc_Avg_Buffer[ISUP]- Vref)*ADC_RESOLUTION*ConfigPara.calFactor[ISUP].Gain)* ConfigPara.calFactor[ISUP].corFac)/IphBase;//3.39
 	Isup_DCBlock.yn = ConfigPara.DcBlocker_factor.Isup*Isup_DCBlock.yn+(Isup[rawValue]-Isup_DCBlock.xn);  // DC Blockers
 	Isup_DCBlock.xn = Isup[rawValue];
 	Isup[procValue]=Isup_DCBlock.yn; // only DC blocker Output
 
-*/
+
 
 
 	//Calculation of DC quantities and low pass filtering
-/*	This section is not mounted in slave PCB
- * Vout[rawValue] = ((float)Adc_Avg_Buffer[VOUT]*ADC_RESOLUTION);
+/*	This section is not mounted in slave PCB */
+    Vout[rawValue] = ((float)Adc_Avg_Buffer[VOUT]*ADC_RESOLUTION);
 	Vout[rawValue] = ((Vout[rawValue]*ConfigPara.calFactor[VOUT].Slope)+ ConfigPara.calFactor[VOUT].Offset)*(ConfigPara.calFactor[VOUT].corFac); // Low pass filter for Vout
 	Vout_LPF.xn = Vout[rawValue];
 	Vout_LPF.yn = Vout_LPF.xn + ((float)ConfigPara.lpf_factor.Vout*(Vout_LPF.yn-Vout_LPF.xn));
-	Vout[procValue] = Vout_LPF.yn;*/
+	Vout[procValue] = Vout_LPF.yn;
 
 	Ipsfb[rawValue] = ((float)Adc_Avg_Buffer[IPSFB]*ADC_RESOLUTION);
 	Ipsfb[rawValue] = ((Ipsfb[rawValue]*ConfigPara.calFactor[IPSFB].Slope) + ConfigPara.calFactor[IPSFB].Offset)*(ConfigPara.calFactor[IPSFB].corFac); // Low pass filter for Irect
@@ -445,7 +446,7 @@ void Parameter_Calculations(void)
 
 
 	// Calculating the RMS and AC Protection function at every 1 mSec
-	//calculateRMS(ConfigPara.freqInner, ConfigPara.Fsystem);	//Removing entire function because none of the section is mounted on PCB
+	calculateRMS(ConfigPara.freqInner, ConfigPara.Fsystem);	//Removing entire function because none of the section is mounted on PCB
 
 }
 
@@ -821,4 +822,9 @@ void turnOff()
 	TurnONFlag = 0;
 	PWMOFF();
 	PSFBOFF();
+}
+
+void NOP()
+{
+	__ASM volatile ("NOP");
 }

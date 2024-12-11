@@ -51,7 +51,7 @@
 
 /* Private function prototypes -----------------------------------------------*/
 /* USER CODE BEGIN PFP */
-
+extern void ADC_SPI(void);
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -336,6 +336,8 @@ void TIM7_DAC_IRQHandler(void)
   HAL_TIM_IRQHandler(&htim7);
   /* USER CODE BEGIN TIM7_DAC_IRQn 1 */
   HAL_ADC_Start_DMA(&hadc1,(uint32_t*)Adc1_Buffer,ADC1_BUFFER_SIZE); //Start ADC1
+  ADC_SPI();
+//  HAL_GPIO_TogglePin(SP_OP1_GPIO_Port, SP_OP1_Pin);
   Tim7_Execution();
   /* USER CODE END TIM7_DAC_IRQn 1 */
 }
