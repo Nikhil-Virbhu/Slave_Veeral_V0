@@ -137,8 +137,6 @@ void Error_Handler(void);
 #define DI1_GPIO_Port GPIOC
 #define DI2_Pin GPIO_PIN_9
 #define DI2_GPIO_Port GPIOC
-#define AFEH1_Pin GPIO_PIN_8
-#define AFEH1_GPIO_Port GPIOA
 #define AFEL1_Pin GPIO_PIN_9
 #define AFEL1_GPIO_Port GPIOA
 #define AFEH2_Pin GPIO_PIN_10

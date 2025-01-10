@@ -1,0 +1,2 @@
+Modbus_Master.c:26:10:ModbusRTU_CRC	4
+Modbus_Master.c:46:6:Reset_Buffer	1

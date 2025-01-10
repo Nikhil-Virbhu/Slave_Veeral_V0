@@ -13,6 +13,7 @@
 "./Core/Src/CAN2_Receving.o"
 "./Core/Src/CAN2_Transmitting.o"
 "./Core/Src/Can_Data_Xchange.o"
+"./Core/Src/ModbusRTU_Slave.o"
 "./Core/Src/adc.o"
 "./Core/Src/dac.o"
 "./Core/Src/dma.o"

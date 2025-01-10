@@ -1,0 +1,2 @@
+../Core/Src/Modbus_Master.c:26:10:ModbusRTU_CRC	32	static
+../Core/Src/Modbus_Master.c:46:6:Reset_Buffer	16	static

@@ -44,6 +44,7 @@
 //#include "CAN2_Receving.h"
 //#include "Can_Data_Xchange.h"
 #include "error_display.h"
+//#include "ModbusRTU_Master.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -71,6 +72,9 @@
 
 uint8_t u8temp=1,u8temp1=1,u8MASTER1_STATUS,TXDATA[8],resetFlag=1,u8MASTER1_STATUS_CAN2;
 uint16_t u8Slavenumber=0,u8_5mstimer;
+
+extern uint8_t uartRxData;
+extern uint16_t ModbusRegister[];
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -151,11 +155,15 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  while (1)
-  {
-
-
-
+	HAL_UART_Receive_IT(&huart5 , &uartRxData , 1);
+	ModbusRegister[0] = 20;
+	ModbusRegister[1] = 15;
+	ModbusRegister[2] = 20;
+	ModbusRegister[3] = 4;
+	ModbusRegister[4] = 5;
+	ModbusRegister[5] = 6;
+	while (1)
+	{
 		if(cmd.bits.fault_reset == 1){
 		//	NVIC_SystemReset();	// System reset
 			manual_fault_reset(); // Manual reset of Fault over command from Master
@@ -165,29 +173,29 @@ int main(void)
 		if (mSec1_Flag==1){
 			getDigiIn();
 
-//			if((FAIL1 !=0) || (FAIL2 != 0))
-//			{
-//				HAL_FDCAN_Stop(&hfdcan1);
-//				u8Slavenumber = SlaveBoardNum();
-//				MX_FDCAN1_Init();
-//				FAIL1=0;
-//				FAIL2=0;
-//			}
-//			else
-//			{
-//			}
+	//			if((FAIL1 !=0) || (FAIL2 != 0))
+	//			{
+	//				HAL_FDCAN_Stop(&hfdcan1);
+	//				u8Slavenumber = SlaveBoardNum();
+	//				MX_FDCAN1_Init();
+	//				FAIL1=0;
+	//				FAIL2=0;
+	//			}
+	//			else
+	//			{
+	//			}
 
-//			if((CAN2_Fail1 !=0) || (CAN2_Fail2 != 0))
-//			{
-//				HAL_FDCAN_Stop(&hfdcan2);
-//				u8Slavenumber = SlaveBoardNum();
-//				MX_FDCAN2_Init();
-//				CAN2_Fail1=0;
-//				CAN2_Fail2=0;
-//			}
-//			else
-//			{
-//			}
+	//			if((CAN2_Fail1 !=0) || (CAN2_Fail2 != 0))
+	//			{
+	//				HAL_FDCAN_Stop(&hfdcan2);
+	//				u8Slavenumber = SlaveBoardNum();
+	//				MX_FDCAN2_Init();
+	//				CAN2_Fail1=0;
+	//				CAN2_Fail2=0;
+	//			}
+	//			else
+	//			{
+	//			}
 			//CAN_DATA_XCHANGING(); // Exchange of Data between the Master and Slave
 			mSec1_Flag=0;
 		}
@@ -198,11 +206,11 @@ int main(void)
 			static uint8_t u8teamlastvalue;
 			if(u8MASTER1_STATUS!=u8teamlastvalue)
 			{
-//				API_CAN_HEARTBEAT_CELL0139_MASTER01(CONNECT);
+	//				API_CAN_HEARTBEAT_CELL0139_MASTER01(CONNECT);
 			}
 			else
 			{
-//				API_CAN_HEARTBEAT_CELL0139_MASTER01(DISCONNECT);
+	//				API_CAN_HEARTBEAT_CELL0139_MASTER01(DISCONNECT);
 			}
 			u8teamlastvalue=u8MASTER1_STATUS;
 
@@ -223,11 +231,11 @@ int main(void)
 			static uint8_t u8teamlastvalue_CAN2;
 			if(u8MASTER1_STATUS_CAN2!=u8teamlastvalue_CAN2)
 			{
-//				API_CAN2_HEARTBEAT_CELL0139_MASTER01(CONNECT);
+	//				API_CAN2_HEARTBEAT_CELL0139_MASTER01(CONNECT);
 			}
 			else
 			{
-//				API_CAN2_HEARTBEAT_CELL0139_MASTER01(DISCONNECT);
+	//				API_CAN2_HEARTBEAT_CELL0139_MASTER01(DISCONNECT);
 			}
 			u8teamlastvalue_CAN2=u8MASTER1_STATUS_CAN2;
 
@@ -248,7 +256,7 @@ int main(void)
 		//Task Executed at every 100 mSec
 		if (mSec100_Flag==1){
 			mSec100_Flag=0;
-//			CAN_DATA_XCHANGING();
+	//			CAN_DATA_XCHANGING();
 		}
 
 		// Task Executed at every 1 Sec
@@ -266,22 +274,23 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-//		(u8temp==1) ? MX_FDCAN2_Init() : 0;
-//		u8temp=0;
-//
-//		(u8temp1==1) ? MX_FDCAN1_Init() : 0;
-//		u8temp1=0;
-//		API_CAN_HEARTBEAT_CELL0139_MASTER01(CONNECT);
-//				HAL_Delay(1000);
+	//		(u8temp==1) ? MX_FDCAN2_Init() : 0;
+	//		u8temp=0;
+	//
+	//		(u8temp1==1) ? MX_FDCAN1_Init() : 0;
+	//		u8temp1=0;
+	//		API_CAN_HEARTBEAT_CELL0139_MASTER01(CONNECT);
+	//				HAL_Delay(1000);
 
-//	  PSFBON();
-//	  HAL_Delay(1000);
-//	  PSFBOFF();
-//	  HAL_Delay(1000);
-    /* USER CODE END WHILE */
+	//	  PSFBON();
+	//	  HAL_Delay(1000);
+	//	  PSFBOFF();
+	//	  HAL_Delay(1000);
+	/* USER CODE END WHILE */
 
-    /* USER CODE BEGIN 3 */
-  }
+	/* USER CODE BEGIN 3 */
+		uartDataHandler();
+	}
   /* USER CODE END 3 */
 }
 

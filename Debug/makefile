@@ -76,8 +76,8 @@ all: main-build
 main-build: Slave_Veeral_V0.elf secondary-outputs
 
 # Tool invocations
-Slave_Veeral_V0.elf Slave_Veeral_V0.map: $(OBJS) $(USER_OBJS) C:\Users\SavanSutariya\OneDrive\ -\ Virginia\ Transformer\ India\ Private\ Limited\Desktop\Savan-Work\Firmware\Scheme\ B\Slave_Veeral_V0\STM32G474VETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "Slave_Veeral_V0.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\SavanSutariya\OneDrive - Virginia Transformer India Private Limited\Desktop\Savan-Work\Firmware\Scheme B\Slave_Veeral_V0\STM32G474VETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Slave_Veeral_V0.map" -Wl,--gc-sections -static -L"C:\Users\SavanSutariya\OneDrive - Virginia Transformer India Private Limited\Desktop\Savan-Work\Firmware\Scheme B\Slave_Veeral_V0\Drivers\CMSIS\Lib\GCC" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Slave_Veeral_V0.elf Slave_Veeral_V0.map: $(OBJS) $(USER_OBJS) C:\Users\HirenTejani\OneDrive\ -\ Virginia\ Transformer\ India\ Private\ Limited\Desktop\Hiren\ Tejani\Firmware\Veeral\ Slave\STM32G474VETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "Slave_Veeral_V0.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\HirenTejani\OneDrive - Virginia Transformer India Private Limited\Desktop\Hiren Tejani\Firmware\Veeral Slave\STM32G474VETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Slave_Veeral_V0.map" -Wl,--gc-sections -static -L"C:\Users\HirenTejani\OneDrive - Virginia Transformer India Private Limited\Desktop\Hiren Tejani\Firmware\Veeral Slave\Drivers\CMSIS\Lib\GCC" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
